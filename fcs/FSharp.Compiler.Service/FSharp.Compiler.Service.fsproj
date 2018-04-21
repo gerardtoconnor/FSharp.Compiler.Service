@@ -36,7 +36,6 @@
     <OtherFlags>$(OtherFlags) --version:$(VersionPrefix).0</OtherFlags>
     <ResolveNuGetPackages>false</ResolveNuGetPackages>
     <Prefer32Bit>true</Prefer32Bit>
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +102,7 @@
     <Compile Include="$(FSharpSourcesRoot)\utils\ResizeArray.fs">
       <Link>Utilities\ResizeArray.fs</Link>
     </Compile>
+    <Compile Include="Utilities\ShardMap.fs" />
     <Compile Include="$(FSharpSourcesRoot)\utils\HashMultiMap.fsi">
       <Link>Utilities/HashMultiMap.fsi</Link>
     </Compile>
@@ -590,7 +590,7 @@
     <Compile Include="$(FSharpSourcesRoot)\fsharp\vs\ExternalSymbol.fs">
       <Link>Service/ExternalSymbol.fs</Link>
     </Compile>
-	<Compile Include="$(FSharpSourcesRoot)\fsharp\vs\QuickParse.fsi">
+    <Compile Include="$(FSharpSourcesRoot)\fsharp\vs\QuickParse.fsi">
       <Link>Service/QuickParse.fsi</Link>
     </Compile>
     <Compile Include="$(FSharpSourcesRoot)\fsharp\vs\QuickParse.fs">
@@ -626,7 +626,6 @@
     <Compile Include="$(FSharpSourcesRoot)\fsharp\fsi\fsi.fs">
       <Link>Service/fsi.fs</Link>
     </Compile>
-
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -649,14 +648,12 @@
     <Reference Include="System.ValueTuple">
       <HintPath>$(FSharpSourcesRoot)\..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-
     <!-- we build the nuget against FSHarp.Core 4.4.0.0 instead of our latest to allow use in wider range of F# tools -->
     <Reference Include="FSharp.Core">
       <HintPath>$(FSharpSourcesRoot)\..\packages\Microsoft.Portable.FSharp.Core.4.1.20\lib\profiles\net40\FSharp.Core.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>
-
   <Import Project="$(FSharpSourcesRoot)\..\packages\FSharp.Compiler.Tools.4.1.27\tools\Microsoft.FSharp.Targets" />
   <Import Project="$(FSharpSourcesRoot)\scripts\fssrgen.targets" />
   <Import Project="$(FSharpSourcesRoot)\..\packages\FsLexYacc.7.0.6\build\FsLexYacc.targets" />

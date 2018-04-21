@@ -622,7 +622,7 @@ and FSharpEntity(cenv:cenv, entity:EntityRef) =
     member x.ActivePatternCases =
         protect <| fun () -> 
             ActivePatternElemsOfModuleOrNamespace x.Entity
-            |> Map.toList
+            |> NameMap.toList
             |> List.map (fun (_, apref) ->
                 let item = Item.ActivePatternCase apref
                 FSharpActivePatternCase(cenv, apref.ActivePatternInfo, apref.ActivePatternVal.Type, apref.CaseIndex, Some apref.ActivePatternVal, item))
